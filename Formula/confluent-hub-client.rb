@@ -1,9 +1,9 @@
 class ConfluentHubClient < Formula
   desc "Confluent Hub Client"
   homepage "https://confluent.io"
-  url "https://s3-us-west-2.amazonaws.com/confluent-hub-client/confluent-hub-client-5.1.0-beta180619025141-package.tar.gz"
-  version "5.1.0-beta180619025141"
-  sha256 "6520a3bda6cbcf2b695e0d46248ea1638e1039b6f0a8e47a1a9ac3af5c21a388"
+  url "https://s3-us-west-2.amazonaws.com/confluent-hub-client/confluent-hub-client-v5.0.0-beta201806200000-package.tar.gz"
+  version "5.0.0-beta201806200000"
+  sha256 "bc52244627b5a516a02480f8800637a26269fd896fdc78d3499b75a5aedc834b"
 
   def install
     bin.install "bin/confluent-hub"
