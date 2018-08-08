@@ -7,6 +7,6 @@ This a brew tap repository containing a "Formula" for Confluent Hub Client.
 Run the following in your command-line:
 
 ```sh
-$ brew tap confluentinc/confluent-hub-client
-$ brew install confluent-hub-client
+$ brew tap confluentinc/homebrew-confluent-hub-client 
+$ brew cask install confluent-hub-client
 ```
