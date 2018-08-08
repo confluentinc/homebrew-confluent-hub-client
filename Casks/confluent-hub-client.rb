@@ -18,6 +18,6 @@ cask 'confluent-hub-client' do
   uninstall delete:    [
                          '/usr/local/bin/confluent-hub',
                          '/usr/local/share/java/confluent-hub-client',
-                       ],
-            delete:  '/Applications/ConfluentHubClient.app'
+                         '/Applications/ConfluentHubClient.app'
+                       ]
 end
