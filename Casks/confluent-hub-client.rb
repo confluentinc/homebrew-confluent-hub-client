@@ -1,23 +1,8 @@
 cask 'confluent-hub-client' do
-  version '5.1.0-SNAPSHOT'
-  sha256 'a0c008f95cd3cd01b3a24729a27307ac5d01990cd9b73b185ccfb0728677af80'
-  url "https://s3-us-west-2.amazonaws.com/confluent-hub-client/ConfluentHubClient-#{version}.pkg"
+  version '5.0.1-SNAPSHOT'
+  sha256 '3bf8a99e08b2dafe91ea6c114c1960f8cedc57c3df8a0bce77d01a4c68dc11d3'
+  url "https://s3-us-west-2.amazonaws.com/confluent-hub-client/confluent-hub-client-#{version}-package.tar.gz"
   name 'Confluent Hub Client'
   homepage 'https://www.confluent.io/hub/'
-  pkg "ConfluentHubClient-#{version}.pkg"
-
-   postflight do
-    system_command '/bin/ln',
-                   args: ['-nsf', '--', "/Applications/ConfluentHubClient.app/Contents/bin/confluent-hub", '/usr/local/bin/confluent-hub'],
-                   sudo: true
-    system_command '/bin/ln',
-                   args: ['-nsf', '--', "/Applications/ConfluentHubClient.app/Contents/share/java/confluent-hub-client", '/usr/local/share/java/confluent-hub-client'],
-                   sudo: true
-  end
-
-  uninstall delete:    [
-                         '/usr/local/bin/confluent-hub',
-                         '/usr/local/share/java/confluent-hub-client',
-                         '/Applications/ConfluentHubClient.app'
-                       ]
+  binary "#{staged_path}/bin/confluent-hub"
 end
