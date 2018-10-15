@@ -6,6 +6,8 @@ then
   exit 1
 fi
 
+echo "UPDATE_LATEST=$UPDATE_LATEST"
+
 version=${RELEASE_TAG:1}
 
 cd /tmp
