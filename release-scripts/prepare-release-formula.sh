@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -e
+set -x
+
 if [ -z "$RELEASE_TAG" ]
 then
   echo "\$RELEASE_TAG is empty"
