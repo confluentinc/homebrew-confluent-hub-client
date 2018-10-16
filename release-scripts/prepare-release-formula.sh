@@ -30,7 +30,7 @@ gradle
 ./gradlew clients:install connect:api:install connect:runtime:install install_2_11
 cd -
 
-for repo in common private-common license-file-generator; do
+for repo in license-file-generator common private-common; do
 	install_mvn_dependency $repo
 done
 
