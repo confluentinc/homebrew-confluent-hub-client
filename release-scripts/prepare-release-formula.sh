@@ -57,5 +57,4 @@ sed -i -E "s/version '.*'/version '$version'/g" Casks/confluent-hub-client.rb
 sed -i -E "s/sha256 '.*'/sha256 '$sha_sum'/g" Casks/confluent-hub-client.rb
 git add Casks/confluent-hub-client.rb
 git commit -m "Bump up formula to $RELEASE_TAG"
-git remote add owner git@github.com:$PR_REPOSITORY_OWNER/homebrew-confluent-hub-client.git
-git push owner "prepare-$RELEASE_TAG"
+git push origin "prepare-$RELEASE_TAG"
