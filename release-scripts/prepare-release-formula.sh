@@ -9,9 +9,16 @@ then
   exit 1
 fi
 
-echo "UPDATE_LATEST=$UPDATE_LATEST"
-
 version=${RELEASE_TAG:1}
+
+function install_mvn_dependency {
+	rm -rf $1
+	git clone git@github.com:confluentinc/$1.git
+	cd $1
+	git checkout $RELEASE_TAG
+	mvn clean install -DskipTests
+	cd -
+}
 
 cd /tmp
 
@@ -23,19 +30,9 @@ gradle
 ./gradlew clients:install connect:api:install connect:runtime:install install_2_11
 cd -
 
-rm -rf common
-git clone git@github.com:confluentinc/common.git
-cd common
-git checkout $RELEASE_TAG
-mvn clean install -DskipTests
-cd -
-
-rm -rf private-common
-git clone git@github.com:confluentinc/private-common.git
-cd private-common
-git checkout $RELEASE_TAG
-mvn clean install -DskipTests
-cd -
+for repo in common private-common license-file-generator; do
+	install_mvn_dependency $repo
+done
 
 rm -rf hub-client
 git clone git@github.com:confluentinc/hub-client.git
@@ -46,6 +43,11 @@ shasum -a 256 target/confluent-hub-client-*-package.tar.gz | cut -c1-64 > $(ls t
 sha_sum=$(cat target/confluent-hub-client-*-package.tar.gz.sha256.txt)
 aws s3 cp target/confluent-hub-client-*-package.tar.gz s3://client.hub.confluent.io/
 aws s3 cp target/confluent-hub-client-*-package.tar.gz.sha256.txt s3://client.hub.confluent.io/
+if $UPDATE_LATEST; then
+	aws s3 cp target/confluent-hub-client-*-package.tar.gz s3://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
+	aws s3 cp target/confluent-hub-client-*-package.tar.gz.sha256.txt s3://client.hub.confluent.io/confluent-hub-client-latest.tar.gz.sha256.txt
+fi
+cd -
 
 rm -rf homebrew-confluent-hub-client
 git clone git@github.com:confluentinc/homebrew-confluent-hub-client.git
@@ -56,4 +58,3 @@ sed -i -E "s/sha256 '.*'/sha256 '$sha_sum'/g" Casks/confluent-hub-client.rb
 git add Casks/confluent-hub-client.rb
 git commit -m "Bump up formula to $RELEASE_TAG"
 git push origin "prepare-$RELEASE_TAG"
-
