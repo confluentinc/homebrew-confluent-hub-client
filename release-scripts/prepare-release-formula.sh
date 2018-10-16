@@ -20,7 +20,7 @@ git clone git@github.com:confluentinc/kafka.git
 cd kafka
 git checkout $RELEASE_TAG
 gradle
-./gradlew installAll
+./gradlew clients:install connect:api:install connect:runtime:install install_2_11
 cd -
 
 rm -rf common
@@ -30,6 +30,7 @@ git checkout $RELEASE_TAG
 mvn clean install -DskipTests
 cd -
 
+rm -rf private-common
 git clone git@github.com:confluentinc/private-common.git
 cd private-common
 git checkout $RELEASE_TAG
