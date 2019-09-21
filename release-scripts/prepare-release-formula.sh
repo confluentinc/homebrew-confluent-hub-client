@@ -35,7 +35,7 @@ for repo in license-file-generator common; do
 done
 
 #private-common was deprecated in 5.3.x
-if [[ $RELEASE_TAG == 5.2.* ]] ;
+if [[ $RELEASE_TAG == v5.2.* ]] ;
 then
 	install_mvn_dependency private-common
 fi
