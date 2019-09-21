@@ -37,7 +37,10 @@ done
 #private-common was deprecated in 5.3.x
 if [[ $RELEASE_TAG == v5.2.* ]] ;
 then
+	echo "Installing private-common"
 	install_mvn_dependency private-common
+else
+	echo "Skipping installation of private-common"
 fi
 
 rm -rf hub-client
