@@ -34,6 +34,13 @@ for repo in license-file-generator common; do
 	install_mvn_dependency $repo
 done
 
+if [[ $RELEASE_TAG == 5.2.* ]] ;
+then
+	install_mvn_dependency private-common
+fi
+
+
+
 rm -rf hub-client
 git clone git@github.com:confluentinc/hub-client.git
 cd hub-client
