@@ -34,12 +34,11 @@ for repo in license-file-generator common; do
 	install_mvn_dependency $repo
 done
 
+#private-common was deprecated in 5.3.x
 if [[ $RELEASE_TAG == 5.2.* ]] ;
 then
 	install_mvn_dependency private-common
 fi
-
-
 
 rm -rf hub-client
 git clone git@github.com:confluentinc/hub-client.git
