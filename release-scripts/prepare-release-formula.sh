@@ -29,7 +29,7 @@ git checkout $RELEASE_TAG
 if [ ! -x ./gradlew ]; then
     gradle
 fi
-./gradlew clients:install connect:api:install connect:runtime:install install_2_11
+./gradlewAll clients:install connect:api:install connect:runtime:install install
 popd
 
 for repo in license-file-generator common; do
