@@ -1,6 +1,6 @@
 cask 'confluent-hub-client' do
-  version '6.2.1'
-  sha256 '78ad12df4fdf7ba05669c245566db4265dd4bcc1b2c3ee2e784efbe7e3db35ea'
+  version '7.0.0'
+  sha256 '3f1ae08fdf3c34a753741b976aee9b07056d3528e86fe9f144e99f2431d75a7f'
   url "http://client.hub.confluent.io/confluent-hub-client-#{version}-package.tar.gz"
   name 'Confluent Hub Client'
   homepage 'https://www.confluent.io/hub/'
