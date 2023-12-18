@@ -8,7 +8,7 @@ Run the following in your command-line:
 
 ```sh
 $ brew tap confluentinc/homebrew-confluent-hub-client 
-$ brew cask install confluent-hub-client
+$ brew install --cask confluent-hub-client
 ```
 
 # Release management
