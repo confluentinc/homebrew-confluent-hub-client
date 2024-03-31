@@ -13,7 +13,7 @@ semaphore:
   tasks:
     - name: release-client
       branch: master
-      pipeline_file: tasks/release-client/tas.yml
+      pipeline_file: tasks/release-client/task.yml
       parameters:
         - name: RELEASE_TAG
           required: true
