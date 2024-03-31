@@ -46,7 +46,7 @@ spec:
   - name: release-client
     scheduled: False
     branch: "master"
-    pipeline_file: tasks/release-client/tas.yml
+    pipeline_file: tasks/release-client/task.yml
     parameters:
     - name: RELEASE_TAG
       required: True
