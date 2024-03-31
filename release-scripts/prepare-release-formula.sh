@@ -54,10 +54,13 @@ shasum -a 256 target/confluent-hub-client-*-package.tar.gz | cut -c1-64 > $(ls t
 sha_sum=$(cat target/confluent-hub-client-*-package.tar.gz.sha256.txt)
 aws s3 cp target/confluent-hub-client-*-package.tar.gz s3://client.hub.confluent.io/
 aws s3 cp target/confluent-hub-client-*-package.tar.gz.sha256.txt s3://client.hub.confluent.io/
-if $UPDATE_LATEST; then
+
+# Update latest if required
+if [[ "$UPDATE_LATEST" == "True" ]]; then
 	aws s3 cp target/confluent-hub-client-*-package.tar.gz s3://client.hub.confluent.io/confluent-hub-client-latest.tar.gz
 	aws s3 cp target/confluent-hub-client-*-package.tar.gz.sha256.txt s3://client.hub.confluent.io/confluent-hub-client-latest.tar.gz.sha256.txt
 fi
+
 popd
 
 rm -rf homebrew-confluent-hub-client

@@ -1,0 +1,23 @@
+version: v1.0
+name: tasks/release-client
+agent:
+  machine:
+    type: s1-prod-ubuntu20-04-amd64-1
+fail_fast:
+  cancel:
+    when: "true"
+execution_time_limit:
+  hours: 1
+global_job_config:
+  prologue:
+    commands:
+      - checkout
+blocks:
+  - name: Release Confluent Hub Client
+    dependencies: []
+    task:
+      jobs:
+        - name: Run Task
+          commands:
+            - cd tasks/release-client
+            - ./task.sh
