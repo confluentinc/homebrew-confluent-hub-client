@@ -1,0 +1,26 @@
+version: v1.0
+name: build-test-release
+agent:
+  machine:
+    type: s1-prod-ubuntu20-04-amd64-1
+auto_cancel:
+  running:
+    when: "branch != 'master'"
+execution_time_limit:
+  hours: 1
+blocks:
+  - name: "format check"
+    dependencies: []
+    run:
+      # don't run the build or unit tests on non-functional changes...
+      when: "change_in('/', {exclude: ['/.deployed-versions/', '.github/']})"
+    task:
+      jobs:
+        - name: "format check"
+          commands:
+            - export "GOPATH=$(go env GOPATH)"
+            - export "PATH=${GOPATH}/bin:${PATH}"
+            - go install github.com/google/yamlfmt/cmd/yamlfmt@latest
+            - checkout
+            - yamlfmt -lint --exclude .semaphore/project.yml .
+            - python check.py
