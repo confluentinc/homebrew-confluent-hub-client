@@ -16,7 +16,7 @@ function install_mvn_dependency {
 	git clone git@github.com:confluentinc/$1.git
 	pushd $1
 	git checkout $RELEASE_TAG
-	mvn clean install -DskipTests
+	mvn -Pjenkins clean install -DskipTests
 	popd
 }
 
