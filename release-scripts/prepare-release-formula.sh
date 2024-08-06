@@ -71,4 +71,4 @@ sed -i -E "s/version '.*'/version '$version'/g" Casks/confluent-hub-client.rb
 sed -i -E "s/sha256 '.*'/sha256 '$sha_sum'/g" Casks/confluent-hub-client.rb
 git add Casks/confluent-hub-client.rb
 git commit -m "Bump up formula to $RELEASE_TAG"
-git push origin "prepare-$RELEASE_TAG"
+git push origin "prepare-$RELEASE_TAG" -f
