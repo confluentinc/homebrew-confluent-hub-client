@@ -11,40 +11,7 @@ fi
 
 version=${RELEASE_TAG:1}
 
-function install_mvn_dependency {
-	rm -rf $1
-	git clone git@github.com:confluentinc/$1.git
-	pushd $1
-	git checkout $RELEASE_TAG
-	mvn -Pjenkins clean install -DskipTests
-	popd
-}
-
 pushd /tmp
-
-rm -rf kafka
-git clone git@github.com:confluentinc/kafka.git
-pushd kafka
-git checkout $RELEASE_TAG
-if [ ! -x ./gradlew ]; then
-    gradle
-fi
-./gradlewAll -PskipSigning=true clients:install connect:api:install connect:runtime:install install
-popd
-
-for repo in license-file-generator common; do
-	install_mvn_dependency $repo
-done
-
-#private-common was deprecated in 5.3.x
-if [[ $RELEASE_TAG == v5.2.* ]] ;
-then
-	echo "Installing private-common"
-	install_mvn_dependency private-common
-else
-	echo "Skipping installation of private-common"
-fi
-
 rm -rf hub-client
 git clone git@github.com:confluentinc/hub-client.git
 pushd hub-client
