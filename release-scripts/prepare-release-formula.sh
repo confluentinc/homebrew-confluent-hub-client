@@ -22,16 +22,6 @@ function install_mvn_dependency {
 
 pushd /tmp
 
-rm -rf kafka
-git clone git@github.com:confluentinc/kafka.git
-pushd kafka
-git checkout $RELEASE_TAG
-if [ ! -x ./gradlew ]; then
-    gradle
-fi
-./gradlewAll -PskipSigning=true clients:install connect:api:install connect:runtime:install install
-popd
-
 for repo in license-file-generator common; do
 	install_mvn_dependency $repo
 done
