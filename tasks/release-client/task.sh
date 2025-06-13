@@ -10,5 +10,8 @@ then
     exit 1
 fi
 
+# Ensure Java 11 is set for all builds
+sem-version java 17
+
 cd ../..
 ./release-scripts/prepare-release-formula.sh
