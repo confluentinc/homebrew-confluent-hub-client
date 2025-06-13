@@ -18,6 +18,7 @@ blocks:
       jobs:
         - name: "format check"
           commands:
+            - sem-version java 17
             - export "GOPATH=$(go env GOPATH)"
             - export "PATH=${GOPATH}/bin:${PATH}"
             - go install github.com/google/yamlfmt/cmd/yamlfmt@latest
