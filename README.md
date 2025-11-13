@@ -1,7 +1,7 @@
 # 🛑 DEPRECATED 🛑 
-## This repository is no longer maintained.
+**This repository is no longer maintained**
 
-## New Repository https://github.com/confluentinc/cli
+**New Repository https://github.com/confluentinc/cli**
 
 # Confluent Hub Client Tap
 
