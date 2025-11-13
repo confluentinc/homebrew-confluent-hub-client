@@ -1,3 +1,8 @@
+# 🛑 DEPRECATED 🛑 
+## This repository is no longer maintained.
+
+## New Repository https://github.com/confluentinc/cli
+
 # Confluent Hub Client Tap
 
 This a brew tap repository containing a "Formula" for Confluent Hub Client.
