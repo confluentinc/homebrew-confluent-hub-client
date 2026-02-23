@@ -26,3 +26,8 @@ semaphore:
           options:
             - 'True'
             - 'False'
+  managed_sections:
+    - version
+    - name
+    - agent
+    - global_job_config
