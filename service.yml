@@ -3,8 +3,6 @@ lang: unknown
 lang_version: unknown
 git:
   enable: true
-github:
-  enable: true
 codeowners:
   enable: true
 semaphore:
@@ -17,12 +15,12 @@ semaphore:
       parameters:
         - name: RELEASE_TAG
           required: true
-          default_value: 'NONE'
-          description: 'Tag which is used to build and upload an archive'
+          default_value: NONE
+          description: Tag which is used to build and upload an archive
         - name: UPDATE_LATEST
           required: true
           default_value: 'False'
-          description: 'Override latest archive(http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz) with a current archive.'
+          description: Override latest archive(http://client.hub.confluent.io/confluent-hub-client-latest.tar.gz) with a current archive.
           options:
             - 'True'
             - 'False'
